@@ -1,0 +1,59 @@
+    <!-- Componente: Formulario -->
+   
+    <div class="borderFox1">
+        <div class="intersectionBox w-[500px] h-[450px] bg">
+  
+          
+            <form 
+            class="center"
+            #f="ngForm" (ngSubmit)="f.form.valid && addValue($event)"
+            >
+              <div class="borderFox1">
+                <div class="rounded-xl w-[458px] h-[50px] bg text-center ">
+                  <select 
+                  [ngClass]="{'bg-red-500': tipo === 'egressOperation', 'bg-green-500': tipo === 'depositOperation'}"
+                  (change)="typeOperation($event)"
+                  class="rounded-xl p-5 w-15 h-5 bg"
+                  >
+                    <option value="depositOperation" selected>+</option>
+                    <option value="egressOperation">-</option>
+                  </select>
+  
+                </div>
+                
+              </div>
+              <div class="w-4/5 mb-5 bg">
+                <input 
+                type="text"  
+                class="input bg" 
+                placeholder="Descripción" 
+                required 
+                [(ngModel)]="descriptionInput"
+                name="descriptionInput"
+                [ngClass]="{'bg-red-500': tipo === 'egressOperation', 'bg-green-500': tipo === 'depositOperation'}"
+                />
+              </div>
+              <div class="w-4/5 mb-5 bg">
+                <input 
+                type="number" 
+                class="input bg" 
+                placeholder="Valor" 
+                required 
+                [(ngModel)]="valueInput"
+                name="valueInput"
+                [ngClass]="{'bg-red-500': tipo === 'egressOperation', 'bg-green-500': tipo === 'depositOperation'}"
+                />
+              </div>
+              <div class="w-1/5">
+                <button 
+                type="submit" 
+                class="btn"
+                [ngClass]="{'bg-red-500': tipo === 'egressOperation', 'bg-green-500': tipo === 'depositOperation'}"
+                >
+                  Enviar
+                </button>
+              </div>
+            </form>
+          
+        </div>
+      </div>

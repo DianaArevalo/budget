@@ -1,0 +1,28 @@
+<div class=" my-5 flex flex-col items-center justify-center min-h-screen w-full bg p-10">
+<h1 class="title">{{title}}</h1>
+    <!-- Cabecero centrado -->
+      <app-head 
+      [budgetResult] = "getBudgetResult()"
+      [depositResult] = "getDepositResult()"
+      [egressResult] = "getEgressResult()"
+      [percentageResult] = "getPercentage()"
+      />
+
+    <!-- Formulario centrado -->
+      <app-form/>
+    <!-- Ingresos y Egresos en columnas de igual tamaño -->   
+    <div class="flex-row twoFox p-5 text-center mb-5 ">
+
+      <div class="h-40 rounded-xl bg overflow-hidden mb-5 p-5">
+          <!-- imagen -->
+      </div>  
+
+      
+      <!-- Componente: Ingresos -->
+       <app-deposit/>
+
+      <!-- Componente: Egresos -->
+      <app-egress [depositResult]=" getDepositResult()"/>
+    </div>
+
+  </div>

@@ -1,0 +1,30 @@
+    <!-- Componente: Cabecero -->
+    <div class="flex-row oneFox ">
+        <div class="p-5 text-center mb-5">
+          <div class="h-40 rounded-xl bg overflow-hidden mb-5">
+            
+          </div>
+          
+          <h4 class="title2">Presupuesto Disponible:</h4>
+          <div class="text-5xl font-bold items-center justify-center p-5">
+            {{budgetResult | currency: 'COL': '$'}}
+          </div>
+          <div class="flex flex-col-2 items-center mt-4 justify-between p-5">
+            <div class=" text-center">
+              <div class="uppercase text-2xl">INGRESOS</div>
+              <div class="">
+               {{depositResult | currency: 'COL': '$'}}
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="uppercase text-2xl">EGRESOS</div>
+              <div class="">
+                {{egressResult | currency: 'COL': '$'}}
+                <span class="badge bg-success ms-2">
+              {{percentageResult | percent}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

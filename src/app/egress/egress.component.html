@@ -1,0 +1,21 @@
+<div class="flex p-0">
+    <h2 class="title2 p-10">Egresos</h2>
+    <ul class="flex mt-3">
+
+      @for (egr of egress; track egr) {
+        <li class="li">
+          <span class="uppercase mb-5">{{egr.description}}</span>
+          <span class="flex">
+            <span class="mb-5 mr-5">- {{egr.value | currency: 'COL': '$': '1.2-2'}}</span>
+            <span class="mb-5 danger bg" >{{calcPercentage(egr) | percent}}</span>
+          </span>
+          <button class="danger bg" (click)="deleteEgress(egr)"> 
+           x <!-- Bootstrap Icon -->
+          </button>
+        </li>
+      }
+      
+    
+    </ul>
+  </div>
+   
