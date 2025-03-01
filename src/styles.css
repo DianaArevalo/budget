@@ -6,7 +6,7 @@
 .bg {
     @apply bg-[#12233f];
 }
-
+ nutria de che
 .oneFox {
     @apply bg-gradient-to-r from-[#22adb7] to-[#22b776] w-[500px] h-[450px] rounded-lg center mb-10;
 }
