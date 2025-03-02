@@ -33,7 +33,10 @@ export class DepositService {
 
  delete(deposit: Deposit){
   const indice: number = this.deposit.indexOf(deposit);
-  this.deposit.splice(indice, 1);
+    if (indice !== -1) {
+      this.deposit.splice(indice, 1);
+      this.saveToLocalStorage();
+    }
  }
 
  getTotalDeposit(){
@@ -49,6 +52,12 @@ export class DepositService {
  }
 
  exportToExcel(){
+
+//obtener los metodos
+const totalDeposit = this.getTotalDeposit();
+const totalEgress = this.getTotalEgress();
+const budget = this.getBudget();
+
 //combinar ingresos y egresos
   const allTransactions =[
     ...this.deposit.map((d) => ({
@@ -63,7 +72,10 @@ export class DepositService {
       Valor: e.value,
       Tipo: 'Egreso',
       Fecha: e.date
-    }))
+    })),
+    { Tipo: 'TOTAL', Descripción: 'Ingresos', Valor: totalDeposit, Fecha: '' },
+    { Tipo: 'TOTAL', Descripción: 'Egresos', Valor: totalEgress, Fecha: '' },
+    { Tipo: 'PRESUPUESTO', Descripción: 'Disponible', Valor: budget, Fecha: '' }
   ];
 
   //agregar fila con presupuesto disponible
@@ -86,6 +98,7 @@ export class DepositService {
 
   clearDeposits() {
     this.deposit = [];
+    this.saveToLocalStorage();
   }
 
  }
