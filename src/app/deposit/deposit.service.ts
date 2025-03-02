@@ -36,24 +36,46 @@ export class DepositService {
   this.deposit.splice(indice, 1);
  }
 
+ getTotalDeposit(){
+  return this.deposit.reduce((total, deposit) => total + deposit.value, 0);
+ }
+
+ getTotalEgress(){
+  return this.egressService.egress.reduce((total, egress) => total + egress.value, 0);
+ }
+
+ getBudget(){
+  return this.getTotalDeposit() - this.getTotalEgress();
+ }
 
  exportToExcel(){
 //combinar ingresos y egresos
-  const combinedData =[
+  const allTransactions =[
     ...this.deposit.map((d) => ({
       Descripción: d.description,
       Valor: d.value,
       Tipo: 'Ingreso',
+      Fecha: d.date
     })),
 
     ...this.egressService.egress.map((e) => ({
       Descripción: e.description,
       Valor: e.value,
       Tipo: 'Egreso',
+      Fecha: e.date
     }))
   ];
 
-  const workssheet = XLSX.utils.json_to_sheet(combinedData);
+  //agregar fila con presupuesto disponible
+
+  allTransactions.push({
+    Tipo: 'Presupuesto',
+    Descripción: 'Presupuesto Final',
+    Valor: this.getBudget(),
+    Fecha: new Date().toISOString().split('T')[0]
+  })
+
+  const workssheet = XLSX.utils.json_to_sheet(allTransactions);
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, workssheet, 'Movimientos');
 
