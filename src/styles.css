@@ -8,11 +8,11 @@
 }
 
 .oneFox {
-    @apply bg-gradient-to-r from-[#22adb7] to-[#22b776] w-[500px] h-[450px] rounded-lg center mb-10;
+    @apply bg-gradient-to-r from-[#22adb7] to-[#22b776]  w-full max-w-[500px] h-auto sm:h-[450px] rounded-lg center mb-10;
 }
 
 .twoFox {
-    @apply bg-gradient-to-r from-[#2263b7] to-[#22adb7] w-[600px] h-[600px] rounded-xl center mb-10;
+    @apply bg-gradient-to-r from-[#2263b7] to-[#22adb7]  w-full max-w-[600px] h-auto sm:h-[600px]  rounded-xl center mb-10;
 }
 
 .borderFox1 {
@@ -42,11 +42,11 @@
 }
 
 .btn {
-    @apply bg-[#2263b7] rounded-xl p-3 uppercase 
+    @apply bg-[#2263b7] rounded-xl p-3 uppercase text-sm sm:text-base
 }
 
 .danger {
-   @apply  rounded-full ring-1 ring-white p-1 uppercase
+   @apply  rounded-full ring-1 ring-white p-1 uppercase w-8 sm:w-10
 }
 
 /* momentaneo */
